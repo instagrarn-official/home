@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dynamicform/static/css/main.9e7d3bd7.css",
-    "main.js": "/dynamicform/static/js/main.e9abea9f.js",
-    "static/media/instagram.svg": "/dynamicform/static/media/instagram.19dc394eb39d4fe65b7205b0a73a6841.svg",
-    "index.html": "/dynamicform/index.html",
-    "static/media/facebook.svg": "/dynamicform/static/media/facebook.6555562764c3d103f26762c808f8a357.svg",
-    "main.9e7d3bd7.css.map": "/dynamicform/static/css/main.9e7d3bd7.css.map",
-    "main.e9abea9f.js.map": "/dynamicform/static/js/main.e9abea9f.js.map"
+    "main.css": "/home/static/css/main.33c39455.css",
+    "main.js": "/home/static/js/main.8217bcac.js",
+    "static/media/instagram.svg": "/home/static/media/instagram.df9beb735defc1d8397ae15bf3aac256.svg",
+    "index.html": "/home/index.html",
+    "static/media/facebook.svg": "/home/static/media/facebook.6555562764c3d103f26762c808f8a357.svg",
+    "main.33c39455.css.map": "/home/static/css/main.33c39455.css.map",
+    "main.8217bcac.js.map": "/home/static/js/main.8217bcac.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e7d3bd7.css",
-    "static/js/main.e9abea9f.js"
+    "static/css/main.33c39455.css",
+    "static/js/main.8217bcac.js"
   ]
 }

